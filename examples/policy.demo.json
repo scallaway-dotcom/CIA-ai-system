@@ -1,0 +1,39 @@
+{
+  "profile": "DEMO ONLY - never production configuration",
+  "demo_mode": true,
+  "live_publish_enabled": false,
+  "platform_allowlist": ["Instagram", "LinkedIn", "TikTok", "X", "Reddit", "Meta"],
+  "max_evidence_age_days": 30,
+  "max_schedule_days": 90,
+  "max_active_wip": 3,
+  "max_model_calls_per_revision": 2,
+  "max_model_calls_per_record": 12,
+  "max_model_calls_per_day": 100,
+  "max_revisions": 2,
+  "blocker_sla_hours": 24,
+  "escalation_target_role": "operations_operator",
+  "category_approver_roles": {
+    "routine": "routine_approver",
+    "founder": "founder_approver",
+    "paid": "paid_approver"
+  },
+  "role_users": {
+    "routine_approver": ["demo-routine-approver"],
+    "founder_approver": ["demo-founder-approver"],
+    "paid_approver": ["demo-paid-approver"],
+    "paid_budget_owner": ["demo-paid-budget-owner"],
+    "account_owner": ["demo-account-owner"],
+    "asset_owner": ["demo-asset-owner"],
+    "content_owner": ["demo-content-owner"],
+    "operations_operator": ["demo-operations-operator"],
+    "security_operator": ["demo-security-operator"]
+  },
+  "channel_baselines": {},
+  "notes": [
+    "Policy is deterministic and hand editable; models cannot override it.",
+    "role_users are synthetic labels for this demo only, not real assignments or authentication.",
+    "sensitive is a hard model and publication lock. founder and paid are separate approval categories, not hard locks.",
+    "paid content additionally requires evidenced paid_spend_authorization within cap.",
+    "WIP counts active production through UNKNOWN reconciliation, not intake or triage backlog."
+  ]
+}

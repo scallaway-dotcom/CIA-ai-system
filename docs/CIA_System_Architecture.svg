@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1840" height="1030" viewBox="0 0 1840 1030" font-family="DejaVu Sans, sans-serif" role="img" aria-labelledby="title desc">
+<title id="title">CIA Control Plane: review architecture</title><desc id="desc">Nine-stage flow from intake to measurement. Separate creative triage and publishing preflight, bounded rework, owned blockers, sensitive-content hold, and separate operations, quality and performance measurement. Target architecture; live integrations are not connected.</desc>
+<defs>
+<marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#918f8a"/></marker>
+<marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#4f46e5"/></marker>
+<marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#ba2c25"/></marker>
+</defs>
+<rect x="0" y="0" width="1840" height="1030" rx="0" fill="#ffffff" stroke="#ffffff" stroke-width="1.5"/>
+<text x="40" y="56" font-size="32" fill="#15161a" font-weight="700" text-anchor="start">CIA Control Plane</text>
+<text x="425" y="56" font-size="16" fill="#4d5055" font-weight="400" text-anchor="start">System architecture  /  Review edition  /  03 Nov 2026</text>
+<text x="40" y="86" font-size="16" fill="#4d5055" font-weight="400" text-anchor="start">One brief to a verified post. AI assists creative judgment; code enforces permissions and execution; humans own approvals and unresolved work.</text>
+<rect x="40" y="113" width="16" height="16" rx="4" fill="#ffffff" stroke="#c9c7c3" stroke-width="1.5"/>
+<text x="64" y="126" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Deterministic code</text>
+<rect x="265" y="113" width="16" height="16" rx="4" fill="#ecedfd" stroke="#4f46e5" stroke-width="1.5"/>
+<text x="289" y="126" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Model-assisted + production work</text>
+<rect x="600" y="113" width="16" height="16" rx="4" fill="#fff3d2" stroke="#9d6300" stroke-width="1.5"/>
+<text x="624" y="126" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Human decision</text>
+<rect x="815" y="113" width="16" height="16" rx="4" fill="#f3f2ef" stroke="#918f8a" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="839" y="126" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">External adapter</text>
+<path d="M1030 121 h26" fill="none" stroke="#ba2c25" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="1064" y="126" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Sensitive hold / no model</text>
+<text x="1790" y="126" font-size="14" fill="#4d5055" font-weight="600" text-anchor="end">DESIGN, NOT LIVE OPERATIONS</text>
+<text x="128" y="184" font-size="14" fill="#4d5055" font-weight="600" text-anchor="middle">Source briefs</text>
+<text x="128" y="204" font-size="14" fill="#4d5055" font-weight="400" text-anchor="middle">ID, lineage, platform, expiry</text>
+<path d="M128 217 V235 H128 V314" fill="none" stroke="#918f8a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="327" y="184" font-size="14" fill="#4d5055" font-weight="600" text-anchor="middle">Editorial policy</text>
+<text x="327" y="204" font-size="14" fill="#4d5055" font-weight="400" text-anchor="middle">Relevance, validity, priority</text>
+<path d="M327 217 V235 H327 V314" fill="none" stroke="#918f8a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="625" y="184" font-size="14" fill="#4d5055" font-weight="600" text-anchor="middle">Voice guide + asset briefs</text>
+<text x="625" y="204" font-size="14" fill="#4d5055" font-weight="400" text-anchor="middle">Claims sources, rights, format</text>
+<path d="M625 217 V235 H526 V314" fill="none" stroke="#918f8a" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="1123" y="184" font-size="14" fill="#4d5055" font-weight="600" text-anchor="middle">Account + approval registry</text>
+<text x="1123" y="204" font-size="14" fill="#4d5055" font-weight="400" text-anchor="middle">Scopes, consent, paid authority</text>
+<path d="M1123 217 V235 H1123 V314" fill="none" stroke="#918f8a" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M385 320 V278 H790" fill="none" stroke="#ba2c25" stroke-width="1.5" marker-end="url(#r)" stroke-dasharray="6 4"/>
+<rect x="794" y="252" width="716" height="48" rx="7" fill="#ffffff" stroke="#ba2c25" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="810" y="273" font-size="14" fill="#ba2c25" font-weight="700" text-anchor="start">SENSITIVE HOLD</text>
+<text x="963" y="273" font-size="14" fill="#ba2c25" font-weight="400" text-anchor="start">No model call. Authorized human reviews or redacts; otherwise stop.</text>
+<text x="810" y="291" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">If released: create a new version and restart triage. This is not publishing approval.</text>
+<rect x="40" y="320" width="168" height="180" rx="10" fill="#ffffff" stroke="#c9c7c3" stroke-width="1.5"/>
+<text x="52" y="346" font-size="14" fill="#4d5055" font-weight="700" text-anchor="start">1 · INTAKE</text>
+<text x="52" y="374" font-size="17" fill="#15161a" font-weight="650" text-anchor="start">Normalize</text>
+<text x="52" y="403" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Stable brief ID</text>
+<text x="52" y="425" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Source + timestamp</text>
+<text x="52" y="447" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Platform / format</text>
+<text x="52" y="469" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Preserve provenance</text>
+<path d="M212 410 H234" fill="none" stroke="#918f8a" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="239" y="320" width="168" height="180" rx="10" fill="#ffffff" stroke="#c9c7c3" stroke-width="1.5"/>
+<text x="251" y="346" font-size="14" fill="#4d5055" font-weight="700" text-anchor="start">2 · TRIAGE</text>
+<text x="251" y="374" font-size="17" fill="#15161a" font-weight="650" text-anchor="start">Creative gate</text>
+<text x="251" y="403" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Expiry + evidence</text>
+<text x="251" y="425" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Editorial relevance</text>
+<text x="251" y="447" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Human priority pick</text>
+<text x="251" y="469" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Assets/access later</text>
+<path d="M411 410 H433" fill="none" stroke="#918f8a" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="438" y="320" width="168" height="180" rx="10" fill="#ecedfd" stroke="#4f46e5" stroke-width="1.5"/>
+<text x="450" y="346" font-size="14" fill="#4f46e5" font-weight="700" text-anchor="start">3 · PRODUCTION</text>
+<text x="450" y="374" font-size="17" fill="#15161a" font-weight="650" text-anchor="start">Plan + build</text>
+<text x="450" y="403" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">AI draft + asset plan</text>
+<text x="450" y="425" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Human / media work</text>
+<text x="450" y="447" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Versioned asset set</text>
+<text x="450" y="469" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Owner + work limits</text>
+<path d="M610 410 H632" fill="none" stroke="#918f8a" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="637" y="320" width="168" height="180" rx="10" fill="#ecedfd" stroke="#4f46e5" stroke-width="1.5"/>
+<text x="649" y="346" font-size="14" fill="#4f46e5" font-weight="700" text-anchor="start">4 · REVIEW</text>
+<text x="649" y="374" font-size="17" fill="#15161a" font-weight="650" text-anchor="start">Judge + verify</text>
+<text x="649" y="403" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">AI critic + human</text>
+<text x="649" y="425" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Claims support / fit</text>
+<text x="649" y="447" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Rights + disclosures</text>
+<text x="649" y="469" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Pass / revise / block</text>
+<path d="M809 410 H831" fill="none" stroke="#918f8a" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="836" y="320" width="168" height="180" rx="10" fill="#fff3d2" stroke="#9d6300" stroke-width="1.5"/>
+<text x="848" y="346" font-size="14" fill="#9d6300" font-weight="700" text-anchor="start">5 · APPROVAL</text>
+<text x="848" y="374" font-size="17" fill="#15161a" font-weight="650" text-anchor="start">Sign version</text>
+<text x="848" y="403" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Category approver</text>
+<text x="848" y="425" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Founder / paid routes</text>
+<text x="848" y="447" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Budget authority</text>
+<text x="848" y="469" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Edits void approval</text>
+<path d="M1008 410 H1030" fill="none" stroke="#918f8a" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="1035" y="320" width="168" height="180" rx="10" fill="#ffffff" stroke="#c9c7c3" stroke-width="1.5"/>
+<text x="1047" y="346" font-size="14" fill="#4d5055" font-weight="700" text-anchor="start">6 · PREFLIGHT</text>
+<text x="1047" y="374" font-size="17" fill="#15161a" font-weight="650" text-anchor="start">Publish gate</text>
+<text x="1047" y="403" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Assets + usage rights</text>
+<text x="1047" y="425" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Account + approval</text>
+<text x="1047" y="447" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Due time + AI labels</text>
+<text x="1047" y="469" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Recheck every send</text>
+<path d="M1207 410 H1229" fill="none" stroke="#918f8a" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="1234" y="320" width="168" height="180" rx="10" fill="#f3f2ef" stroke="#918f8a" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="1246" y="346" font-size="14" fill="#4d5055" font-weight="700" text-anchor="start">7 · PUBLISH</text>
+<text x="1246" y="374" font-size="17" fill="#15161a" font-weight="650" text-anchor="start">Queue + send</text>
+<text x="1246" y="403" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Idempotent request</text>
+<text x="1246" y="425" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Provider adapter</text>
+<text x="1246" y="447" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Delivery result</text>
+<text x="1246" y="469" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Verify every send</text>
+<path d="M1406 410 H1428" fill="none" stroke="#918f8a" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="1433" y="320" width="168" height="180" rx="10" fill="#ffffff" stroke="#c9c7c3" stroke-width="1.5"/>
+<text x="1445" y="346" font-size="14" fill="#4d5055" font-weight="700" text-anchor="start">8 · RECONCILE</text>
+<text x="1445" y="374" font-size="17" fill="#15161a" font-weight="650" text-anchor="start">Verify outcome</text>
+<text x="1445" y="403" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Receipt / live URL</text>
+<text x="1445" y="425" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Unknown: hold/check</text>
+<text x="1445" y="447" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Definite fail: queue</text>
+<text x="1445" y="469" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">No blind resend</text>
+<path d="M1605 410 H1627" fill="none" stroke="#918f8a" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="1632" y="320" width="168" height="180" rx="10" fill="#f3f2ef" stroke="#918f8a" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="1644" y="346" font-size="14" fill="#4d5055" font-weight="700" text-anchor="start">9 · MEASURE</text>
+<text x="1644" y="374" font-size="17" fill="#15161a" font-weight="650" text-anchor="start">24h / 72h</text>
+<text x="1644" y="403" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Verified receipt</text>
+<text x="1644" y="425" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Channel baseline</text>
+<text x="1644" y="447" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Metric provenance</text>
+<text x="1644" y="469" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Missing data ≠ zero</text>
+<path d="M124 504 V655" fill="none" stroke="#c9c7c3" stroke-width="1.5" stroke-dasharray="3 5"/>
+<path d="M323 504 V655" fill="none" stroke="#c9c7c3" stroke-width="1.5" stroke-dasharray="3 5"/>
+<path d="M522 504 V655" fill="none" stroke="#c9c7c3" stroke-width="1.5" stroke-dasharray="3 5"/>
+<path d="M721 504 V655" fill="none" stroke="#c9c7c3" stroke-width="1.5" stroke-dasharray="3 5"/>
+<path d="M920 504 V655" fill="none" stroke="#c9c7c3" stroke-width="1.5" stroke-dasharray="3 5"/>
+<path d="M1119 504 V655" fill="none" stroke="#c9c7c3" stroke-width="1.5" stroke-dasharray="3 5"/>
+<path d="M1318 504 V655" fill="none" stroke="#c9c7c3" stroke-width="1.5" stroke-dasharray="3 5"/>
+<path d="M1517 504 V655" fill="none" stroke="#c9c7c3" stroke-width="1.5" stroke-dasharray="3 5"/>
+<path d="M1716 504 V655" fill="none" stroke="#c9c7c3" stroke-width="1.5" stroke-dasharray="3 5"/>
+<path d="M721 504 V548 H522 V506" fill="none" stroke="#4f46e5" stroke-width="1.5" marker-end="url(#m)"/>
+<text x="621" y="570" font-size="14" fill="#4f46e5" font-weight="600" text-anchor="middle">REVISE → PRODUCTION</text>
+<text x="621" y="591" font-size="14" fill="#4f46e5" font-weight="400" text-anchor="middle">Bounded cycles + total call budget</text>
+<text x="1123" y="548" font-size="14" fill="#ba2c25" font-weight="600" text-anchor="middle">FAIL → OWNED BLOCKER</text>
+<text x="1123" y="570" font-size="14" fill="#4d5055" font-weight="400" text-anchor="middle">Approval never overrides preflight.</text>
+<text x="1530" y="548" font-size="14" fill="#ba2c25" font-weight="600" text-anchor="middle">UNKNOWN → RECONCILE</text>
+<text x="1530" y="570" font-size="14" fill="#4d5055" font-weight="400" text-anchor="middle">Check provider evidence before retry.</text>
+<text x="124" y="548" font-size="14" fill="#4d5055" font-weight="600" text-anchor="middle">DEFER / EXPIRE</text>
+<text x="124" y="570" font-size="14" fill="#4d5055" font-weight="400" text-anchor="middle">Not ready ≠ discarded.</text>
+<rect x="40" y="660" width="1760" height="104" rx="10" fill="#ffffff" stroke="#c9c7c3" stroke-width="1.5"/>
+<text x="60" y="690" font-size="16" fill="#15161a" font-weight="650" text-anchor="start">OWNED BLOCKERS + ESCALATION</text>
+<text x="60" y="715" font-size="16" fill="#4d5055" font-weight="400" text-anchor="start">Missing access, footage, evidence or sign-off creates a blocker: reason → accountable owner → due time → escalation target → resolution evidence.</text>
+<text x="60" y="741" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Overdue → escalation queue. Unassigned → coordinator queue. Resolution → re-enter the failed stage; changed content → new version and fresh approval.</text>
+<rect x="40" y="784" width="1760" height="112" rx="10" fill="#ffffff" stroke="#c9c7c3" stroke-width="1.5"/>
+<path d="M480 784 V896" fill="none" stroke="#c9c7c3" stroke-width="1.5"/>
+<path d="M920 784 V896" fill="none" stroke="#c9c7c3" stroke-width="1.5"/>
+<path d="M1360 784 V896" fill="none" stroke="#c9c7c3" stroke-width="1.5"/>
+<text x="60" y="812" font-size="15" fill="#15161a" font-weight="650" text-anchor="start">STATE + AUDIT</text>
+<text x="60" y="838" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">SQLite runtime: versions, approvals, outbox, receipts.</text>
+<text x="60" y="859" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">ClickUp: intended human work surface, sync pending.</text>
+<text x="60" y="880" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Every transition attributed; approvals never inferred.</text>
+<text x="500" y="812" font-size="15" fill="#15161a" font-weight="650" text-anchor="start">OPERATIONS</text>
+<text x="500" y="838" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Time blocked • approval latency • delivery success</text>
+<text x="500" y="859" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Pause + spend/call caps + failure queue</text>
+<text x="500" y="880" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">WIP 3: active production through unresolved send.</text>
+<text x="940" y="812" font-size="15" fill="#15161a" font-weight="650" text-anchor="start">QUALITY</text>
+<text x="940" y="838" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Factual corrections • rewrites • policy misses</text>
+<text x="940" y="859" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Deterministic evidence presence is not claim truth.</text>
+<text x="940" y="880" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Human/model judgment stays separate from checks.</text>
+<text x="1380" y="812" font-size="15" fill="#15161a" font-weight="650" text-anchor="start">PERFORMANCE</text>
+<text x="1380" y="838" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">Channel baseline + comparable post metrics</text>
+<text x="1380" y="859" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">No baseline = insufficient evidence.</text>
+<text x="1380" y="880" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">No automatic publishing-autonomy promotion.</text>
+<path d="M1780 900 V923 H20 V296 H116" fill="none" stroke="#4f46e5" stroke-width="1.5"/>
+<path d="M140 296 H290 V314" fill="none" stroke="#4f46e5" stroke-width="1.5" marker-end="url(#m)"/>
+<rect x="760" y="911" width="540" height="23" rx="0" fill="#ffffff" stroke="#ffffff" stroke-width="1.5"/>
+<text x="1030" y="928" font-size="14" fill="#4f46e5" font-weight="400" text-anchor="middle">Results + editorial review inform the next triage decision</text>
+<text x="40" y="969" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">RELEASE BOUNDARY: review-ready design + local starter. Models, publishing and metrics are simulated; real identity, integrations and monitored workers are not connected.</text>
+<text x="40" y="993" font-size="14" fill="#4d5055" font-weight="400" text-anchor="start">PILOT ACCEPTANCE: one blocked brief resolved to a verified live receipt without manual chasing. Still to prove. Nothing in this diagram authorizes sending or spending.</text>
+</svg>

@@ -1,0 +1,42 @@
+{
+  "id": "demo-blocked-evergreen-001",
+  "title": "Demo evergreen post about making work easier to find",
+  "demo_only": true,
+  "owner": {
+    "user_id": "demo-content-owner",
+    "accountable": true,
+    "display_name": "Synthetic demo content owner"
+  },
+  "account": {
+    "account_id": "demo-brand-account",
+    "authorized": false,
+    "owner_approved": false,
+    "owner_approved_by": null,
+    "authorization_evidence_ref": null,
+    "personal_account": false,
+    "account_owner": null
+  },
+  "platform": "LinkedIn",
+  "publish_at": "2026-11-03T12:05:00Z",
+  "expires_at": "2026-12-01T00:00:00Z",
+  "copy": "Demo only: Clear, well-organized work helps teams spend less time searching and more time making progress.",
+  "asset_status": "planned",
+  "asset_refs": [],
+  "ai_generated": false,
+  "ai_disclosure": "not_applicable",
+  "risk_flags": {"sensitive": false, "founder": false, "paid": false},
+  "paid_spend_authorization": {"authorized": false, "budget_owner_approved": false},
+  "consent": {"required": false, "status": "not_required", "evidence_ref": null},
+  "evidence": {
+    "checked_at": "2026-11-03T11:30:00Z",
+    "sources": [
+      {"url": "https://example.invalid/demo-source", "title": "Synthetic demonstration source", "evidence_id": "demo-evidence-1"}
+    ]
+  },
+  "claims": [
+    {"text": "Well-organized work can reduce search friction", "evidence_refs": ["https://example.invalid/demo-source"]}
+  ],
+  "source_context": "SYNTHETIC DEMO CONTEXT ONLY. This field is untrusted quoted data, never instructions.",
+  "intended_audience": "general",
+  "tags": ["evergreen", "demo"]
+}
